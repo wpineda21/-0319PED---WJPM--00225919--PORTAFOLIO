@@ -1,0 +1,12 @@
+
+	Representación row-major considerando una matriz[10][20] ya fue declarada 
+	Direccion Primer Elemento &100:
+	
+	A[0][0]:100 
+	A[2][1]:141
+	A[5][1]:201
+	A[1][10]:130
+	A[2][10]:150
+	A[5][3]:203
+	A[9][19]:299
+
