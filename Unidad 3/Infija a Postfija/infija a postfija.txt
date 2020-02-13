@@ -1,0 +1,13 @@
+convierte manualmente las siguientes expresiones de notacion infija a postfija:
+
+ejercicio 1.
+A-B/(C*D$E)
+AB-/C*DE$
+AB-/CDE$*
+AB-CDE$*/
+
+ejercicio 2.
+
+((A+B)*C-(D-E))$(F+G)
+AB+C*-(DE-)$(FG+)
+AB+C*DE--FG+$

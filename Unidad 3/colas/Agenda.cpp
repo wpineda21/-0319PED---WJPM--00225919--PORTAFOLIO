@@ -67,6 +67,7 @@ void insertar(){
     cout<<"digite Hora estimada de dicha actividad: "; getline(cin,unactividad.hora);
     cout<<"Digite duracion de minutos estimada de dicha actividad: "; cin>>unactividad.minutos;
     ActividadActual.MostrarAgenda.push(unactividad);
+    cout<<"\n"<<endl;
 
 }
 
@@ -75,12 +76,12 @@ void imprimir(){
 
         actividad actividadahora = ActividadActual.MostrarAgenda.front();
         cout << "el titulo de la actividad es \n " << actividadahora.titulo<<endl;
-        cout << " se realizara a la hora \n" << actividadahora.hora <<endl;
-        cout << ". Tiempo estimado de demora:\n " << actividadahora.minutos << endl;
-       // ActividadActual.MostrarAgenda.pop();
-    }
-    cout << "Cola vacia!" << endl;
-}
+        cout << "se realizara a la hora \n" << actividadahora.hora <<endl;
+        cout << "Tiempo estimado de demora:\n " << actividadahora.minutos << endl;
+        ActividadActual.MostrarAgenda.pop();
+    
+    }cout << "Cola vacia!" << endl;
+}  
 
 void borrar(){
     while(!ActividadActual.MostrarAgenda.empty()){
