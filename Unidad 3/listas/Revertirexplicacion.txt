@@ -1,0 +1,16 @@
+
+void invertir(nodo** nodoInicio){  //Empieza la funcion recibiendo el puntero doble nodo inicio
+Nodo* result=Null; // se crea un nodo tipo result que apunta  nulo
+Nodo* Current=*nodoInicio;// se crea otro nodo tipo current que a punta al puntero doble recibido
+Nodo* next; // se crea un puntero nodo tipo siguiente
+
+while(current !=Null){//se declara un bucle para que no se salga hasta que el puntero doble recibido(**current) sea diferente de null
+next=Current->sig; //si el bucle no se cumple entonces el nodo next apunta al nodo del puntero doble que esta vacio
+Current->sig=result;//el nodo current apunta al siguente nodo que no esta vacio
+result=Current;//se presenta que el nodo result se igual al anterior a el para revertir el numero
+
+Current = next;//una vez hecho esto se el nodo current vuelve a puntar al nodo next
+}
+
+*nodoInicio=result;//se retorna el valor guardado en el nodo result
+}

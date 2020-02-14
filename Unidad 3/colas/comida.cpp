@@ -149,49 +149,45 @@ int size(Cola *q){
 // Funciones ---------------------------------------
 void agregar(){
     // Solicitar datos del pedido
-    Pedido unPedido;
-    cout << "Digite su apellido: "; getline(cin, unPedido.apellido);
-    cout << "Numero de la mesa: "; cin >> unPedido.mesa; cin.ignore();
-    cout << "Cantidad de revueltas: "; cin >> unPedido.revueltas; cin.ignore();
-    cout << "Cantidad de queso: "; cin >> unPedido.queso; cin.ignore();
-    cout << "Cantidad de FQ: "; cin >> unPedido.frijolqueso; cin.ignore();
-    unPedido.tiempo = (unPedido.revueltas+unPedido.queso+unPedido.frijolqueso) * 90;
-    
+    T Unpan;
+    cout << "Digite su apellido: "; getline(cin, Unpan.Nombre);
+    cout << "Digite el pan a utilizar "; getline(cin,Unpan.pan);
+    cout << "Cantidad de revueltas: "; cin >> getline(cin,Unpan.ingredientes);
+
     // Agregar a la cola
-    enqueue(&laBendicion.colaPedidos, unPedido);
+    enqueue(&subway.ordenPedidos, Unpan);
     // Modificar contadores
-    laBendicion.pupusasHechas += (unPedido.revueltas+unPedido.queso+unPedido.frijolqueso);
 }
 
 void consultar(){
-    cout << "Pedidos en espera: " << size(&laBendicion.colaPedidos) << endl;
-    cout << "Total pupusas hechas: " << laBendicion.pupusasHechas << endl;
+    cout << "Pedidos en espera: " << size(&subway.colaPedidos) << endl;
+
 }
 
 void servir(){
-    Pedido pedidoDespachado = dequeue(&laBendicion.colaPedidos);
-    cout << "Familia " << pedidoDespachado.apellido << " su pedido esta listo\n";
-    cout << "Se encuentran en la mesa " << pedidoDespachado.mesa << endl;
+    T pedidoDespachado = dequeue(&subway.colaPedidos);
+    cout << "Familia " << pedidoDespachado.Nombre << " su pedido esta listo\n";
+
 }
 
 void vertodos(){
     Cola colaTemporal;
     initialize(&colaTemporal);
     
-    // Transfiriendo desde laBendicion.colaPedidos hasta colaTemporal
-    while(!empty(&laBendicion.colaPedidos)){
-        Pedido unPedido = dequeue(&laBendicion.colaPedidos);
-        enqueue(&colaTemporal, unPedido);
+    // Transfiriendo desde subway.colaPedidos hasta colaTemporal
+    while(!empty(&subway.colaPedidos)){
+        T Unpan = dequeue(&subway.colaPedidos);
+        enqueue(&colaTemporal, Unpan);
         
-        cout << "Info del pedido: " << unPedido.apellido << ", ";
-        cout << "R: " << unPedido.revueltas << ", ";
-        cout << "Q: " << unPedido.queso << ", ";
-        cout << "FQ: " << unPedido.frijolqueso << "\n\n";
+        cout << "Info del pedido: " << Unpan.Nombre << ", ";
+        cout << "Pan Seleccionado: " << Unpan.pan << ", ";
+        cout << "Ingredientes: "  << Unpan.ingredientes << ", ";
+
     }
-    // Transfiriendo desde colaTemporal hasta laBendicion.colaPedidos
+    // Transfiriendo desde colaTemporal hasta subway.colaPedidos
     while(!empty(&colaTemporal)){
         T elemento = dequeue(&colaTemporal);
-        enqueue(&laBendicion.colaPedidos, elemento);
+        enqueue(&subway.colaPedidos, elemento);
     }
 }
 
